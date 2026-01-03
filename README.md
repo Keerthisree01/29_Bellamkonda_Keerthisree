@@ -1,4 +1,4 @@
- AI Customer Service Agent using RAG (Telecom Domain)
+AI Customer Service Agent using RAG (Telecom Domain)
 📌 Problem Statement
 
 Customer support teams in the telecom industry handle a large volume of repetitive queries related to network issues, billing, data plans, SIM activation, and service complaints. Manual handling of these queries is time-consuming and inefficient.
