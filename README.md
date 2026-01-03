@@ -1,132 +1,158 @@
-AI Customer Service Agent (RAG over Tickets & Dialogues)
+ AI Customer Service Agent using RAG (Telecom Domain)
+📌 Problem Statement
 
-Hackathon Project Submission
+Customer support teams in the telecom industry handle a large volume of repetitive queries related to network issues, billing, data plans, SIM activation, and service complaints. Manual handling of these queries is time-consuming and inefficient.
 
---------------------------------------------------
+The goal of this project is to build an AI-powered Customer Service Agent that can intelligently answer common telecom support queries by retrieving relevant past tickets and dialogues and generating accurate responses using Retrieval-Augmented Generation (RAG).
 
-Problem Statement  
-Telecom companies handle a large volume of repetitive customer support queries related to billing issues, network problems, SIM services, and subscription plans.
-Manual handling of these queries leads to delayed responses, increased operational costs, and reduced customer satisfaction.
+🧠 Solution Overview
 
-The challenge is to build an AI-powered customer support assistant that can automatically answer common telecom queries using past support data, while escalating complex or sensitive issues to human agents.
+This project implements a Knowledge Assistant that:
 
---------------------------------------------------
+Learns from historical agent–customer interaction text
 
-Proposed Solution  
-This project implements an AI Customer Service Agent using Retrieval-Augmented Generation (RAG). 
-The system retrieves relevant information from historical telecom agent–customer conversations and customer support tickets, and then generates accurate, context-aware responses using a Large Language Model (LLM).
+Retrieves the most relevant past conversations
 
-To ensure reliability and trust, the system returns source references for every answer and applies simple escalation rules when human intervention is required.
+Generates contextual and human-like responses for new customer queries
 
---------------------------------------------------
+The system combines semantic search with language generation, making it more reliable than a standalone chatbot.
 
-Key Features  
-- Automatic answering of common telecom support queries  
-- Retrieval-Augmented Generation to reduce hallucinations  
-- Source IDs returned with each answer for transparency  
-- Rule-based escalation for unresolved or critical queries  
-- Modular and scalable architecture  
-- Supports multiple datasets  
+🗂 Dataset
 
---------------------------------------------------
+Source: Kaggle
+Dataset Name: Telecom Agent–Customer Interaction Text
+Content:
 
-Datasets Used  
+Real-world telecom customer queries
 
-Telecom Agent–Customer Interaction Dataset  
-Source: Kaggle  
-Link: https://www.kaggle.com/datasets/avinashok/telecomagentcustomerinteractiontext  
-Description: Real-world telecom customer–agent conversation data covering common support issues.
+Agent responses
 
-Customer Support Ticket Dataset (Optional)  
-Source: Kaggle  
-Link: https://www.kaggle.com/datasets/suraj520/customer-support-ticket-dataset  
-Description: Structured customer support tickets with issue descriptions and resolutions.
+Issue categories like:
 
---------------------------------------------------
+Network problems
 
-System Architecture (RAG Pipeline)  
-1. Load and preprocess telecom conversations and ticket data  
-2. Split text into chunks with source metadata  
-3. Generate vector embeddings  
-4. Store embeddings in a vector database (ChromaDB or FAISS)  
-5. Retrieve top relevant documents for a query  
-6. Generate final answer using an LLM with retrieved context  
-7. Apply escalation rules to determine human handoff  
+Billing issues
 
---------------------------------------------------
+Data usage
 
-Tech Stack  
-Programming Language: Python  
-Framework: LangChain  
-Vector Database: ChromaDB / FAISS  
-LLM: OpenAI or HuggingFace  
-Backend API: FastAPI or Flask  
-Data Processing: Pandas  
+SIM and service activation
 
---------------------------------------------------
+Complaints and follow-ups
 
-API Endpoint  
+This dataset serves as the knowledge base for retrieval.
 
-POST /ask  
+⚙️ Architecture (RAG Pipeline)
+User Query
+   ↓
+Text Embedding
+   ↓
+Vector Database (Similarity Search)
+   ↓
+Relevant Past Tickets
+   ↓
+LLM (Response Generation)
+   ↓
+Final Answer
 
-Request:
+🛠️ Technologies Used
 
-{
-  "query": "Why is my internet connection slow?"
-}
+Python
 
-{
-  "answer": "Your internet may be slow due to temporary network congestion or router issues. Restarting your router may help.",
-  "sources": ["conversation_102", "ticket_45"],
-  "escalation_required": false
-}
+Google Colab
 
--------------------------------------------------
-Project structure
+Pandas & NumPy – Data processing
 
-AI-Customer-Service-Agent/
-├── data/
-├── src/
-│ ├── rag_pipeline.py
-│ ├── retriever.py
-│ ├── escalation.py
-│ └── app.py
-├── requirements.txt
-├── README.md
-└── .env
+Sentence Transformers / Embeddings
 
--------------------------------------------------
+Vector Similarity Search
 
-Setup Instructions
+Large Language Model (LLM)
 
-git clone https://github.com/your-username/AI-Customer-Service-Agent.git
-cd AI-Customer-Service-Agent
-pip install -r requirements.txt
-python src/app.py
+Retrieval-Augmented Generation (RAG)
 
-------------------------------------------------
+📓 Project Files
+File	Description
+AI_Assistance_Customer_Service.ipynb	Main Colab notebook with complete implementation
+README.md	Project documentation
+data/	Telecom interaction dataset (if added)
+🚀 How It Works
 
-Future Scope
+Data Preprocessing
 
-Multi-language support
+Clean and normalize telecom interaction text
+
+Remove noise and irrelevant symbols
+
+Embedding Generation
+
+Convert dialogues into vector embeddings
+
+Store them in a searchable vector store
+
+Query Handling
+
+User query is embedded
+
+Similar past tickets are retrieved
+
+Response Generation
+
+Retrieved context is passed to the LLM
+
+Model generates an accurate, contextual response
+
+📊 Sample Output
+
+User Query:
+
+“Why is my mobile data not working even though I have an active plan?”
+
+AI Response:
+
+“Your mobile data may not be working due to temporary network issues, incorrect APN settings, or data limits being exhausted. Please restart your device and check network settings. If the issue persists, contact customer support for further assistance.”
+
+✅ Key Features
+
+✔ Context-aware responses
+
+✔ Reduced hallucinations using retrieval
+
+✔ Domain-specific telecom knowledge
+
+✔ Scalable for real-world deployment
+
+✔ Improves customer support efficiency
+
+🔮 Future Enhancements
+
+Integration with live ticketing systems
+
+Multilingual support
 
 Voice-based customer interaction
 
-Advanced sentiment analysis
+Fine-tuned LLM for telecom domain
 
-CRM and live ticket system integration
+Deployment using FastAPI / Streamlit
 
-------------------------------------------------
+🧑‍💻 Use Cases
 
-Team / Author
+Telecom customer support chatbots
 
-Bellamkonda Keerthisree
-AI Alchemists | Hackathon Team name
-Team members 
-Veedula Rishitha|Gadamsetty Sujitha
--------------------------------------------------
-License
+Call center automation
 
-This project is intended for hackathon and educational purposes only.
+Self-service customer portals
 
+Knowledge assistants for agents
 
+📜 Conclusion
+
+This project demonstrates how Retrieval-Augmented Generation can be effectively applied to real-world telecom customer support scenarios. By combining historical interaction data with modern AI models, the system delivers accurate, reliable, and efficient customer service solutions.
+
+📎 References
+
+Kaggle Telecom Dataset
+
+RAG Architecture Concepts
+
+Google Colab Implementation
