@@ -108,3 +108,6 @@ The issue may be caused by temporary network disruptions, incorrect APN settings
 
 ## **12. Conclusion**
 This project demonstrates the effective use of **Retrieval-Augmented Generation** for automating telecom customer support. By leveraging historical interaction data, the system delivers reliable, accurate, and efficient responses to customer queries.
+
+<img width="1696" height="840" alt="image" src="https://github.com/user-attachments/assets/fdfa2885-29d4-4515-9ac6-971ab9e05600" />
+
